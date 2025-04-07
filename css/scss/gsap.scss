@@ -1,0 +1,20 @@
+.wrap { 
+    .bn { width:100%; overflow:hidden; height:450px; position:relative; object-fit:cover; 
+        img { width: 100%; }
+    }
+    .text { color:#555; font-size:4vw; font-weight: 700; }
+    // .box { width:50%; height:350px; background:gray; }
+    // .box.box2 { margin-left:50%; }
+}
+
+
+@media (max-width:500px) {
+.wrap { 
+    .bn { width:100%; overflow:hidden; height:450px; position:relative; object-fit:cover; 
+        img { width: 100%; }
+    }
+    .text { color:#555; font-size:4vw; font-weight: 700; }
+    // .box { width:50%; height:350px; background:gray; }
+    // .box.box2 { margin-left:50%; }
+}
+}

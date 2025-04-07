@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js?v=94387867"></script>
+    <!-- scrollMagic -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+        integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"
+        integrity="sha512-WFeBxQtM/n6U8/Nd0Hz/Hq7n75NImbzM7Kc0y/4kE0kHnH1Be+nzm32RwbGoDsW1D9fjjPvI8LIWxLrZhxew/w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+        integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script> -->
+    <style>
+        body {
+            /* scroll-behavior: smooth; */
+            /* background: #000; */
+            /* display: flex;
+            align-items: center; */
+            padding: 0 20px;
+        }
+
+        .wrap {
+            width: 100%;
+            position: relative;
+        }
+
+        .text {
+            /*color: #fff;*/
+            color: aquamarine;
+            font-size: 55px;
+            font-weight: 700;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: rotateY(-50%);
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 5;
+            filter: invert(0);
+            mix-blend-mode: difference;
+        }
+
+        .box {
+            font-size: 0;
+            width: 20%;
+            margin: 20px;
+            position: relative;
+        }
+
+        .box img {
+            width: 100%;
+        }
+
+        .box:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            transition: all .3s;
+        }
+
+        .wrap .box1 {
+            transform: translateY(300px);
+            background: rgb(243, 72, 42);
+        }
+
+        .wrap .box1:before {
+            background: rgb(243, 72, 42);
+        }
+
+        .wrap .box2 {
+            transform: translateY(700px);
+            margin-left: 60%;
+            background: rgb(37, 216, 67);
+        }
+
+        .wrap .box2:before {
+            background: rgb(37, 216, 67);
+        }
+
+        .wrap .box3 {
+            transform: translate(50%, 1300px);
+            background: rgb(56, 53, 247);
+        }
+
+        .wrap .box3:before {
+            background: rgb(56, 53, 247);
+        }
+
+        .wrap .box4 {
+            margin-top: 2000px;
+            margin-left: 60%;
+            background: rgb(102, 111, 167);
+
+        }
+
+        .wrap .box4:before {
+            background: rgb(56, 53, 247);
+        }
+
+        #motion-demo {
+            offset-path: path("M20,20 C20,100 200,0 200,100");
+            animation: move 3000ms infinite alternate ease-in-out;
+            width: 40px;
+            height: 40px;
+            background: cyan;
+        }
+
+        @keyframes move {
+            0% {
+                offset-distance: 0%;
+            }
+
+            100% {
+                offset-distance: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- <p class="text">test text <br>다운로드, 북마크, 읽기 목록 항목은 계속해서 저장됩니다</p> -->
+        <div class="box box1"><img src="https://imagescdn.gettyimagesbank.com/500/202403/jv13285788.jpg" alt=""></div>
+        <div class="box box2"><img src="https://imagescdn.gettyimagesbank.com/500/202403/jv13350682.jpg" alt=""></div>
+        <div class="box box3"><img src="https://imagescdn.gettyimagesbank.com/500/202202/jv12534960.jpg" alt=""></div>
+
+    </div>
+</body>
+
+<script>
+    (function () {
+
+        // gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+        //scroll reset
+        ScrollTrigger.defaults({
+            toggleActions: "play none reverse",
+        });
+
+        let smoother = ScrollSmoother.create({
+            smooth: 2,
+            effects: true
+        });
+
+        //스크롤 배경색 변경
+        gsap.fromTo("body",
+            { backgroundColor: "#ffffff" },
+            {
+                backgroundColor: "#333333",
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "center center",
+                    end: "center center",
+                    markers: false,
+                },
+            }
+        );
+        /*
+        gsap.fromTo(".text",
+            { color: "#798eb0" },
+            {
+                color: "#ffffff",
+                scrollTrigger: {
+                    trigger: "html",
+                    start: "center center",
+                    end: "center center",
+                    markers: true,
+                },
+            }
+        );*/
+
+        //let targets = document.querySelectorAll(".box");
+        const targets = gsap.utils.toArray('.box');
+        targets.forEach(function (item) {
+            gsap.to(item, { //움직일 대상
+                scrollTrigger: {
+                    trigger: item,
+                    start: "0 70%", //트리거/뷰포트 
+                    end: "50% 70%",
+                    scrub: .1, // 스크롤뒤집기애니메이션 / true/false/숫자
+                    markers: true,
+                },
+                ease: "none",
+                width: "50%",
+                margin: 0,
+                //left: 0
+                toggleClass: "on"
+            });
+        });
+
+    }());
+
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+// @font-face {
+// 	font-family: 'Pretendard';
+// 	font-weight: 400;
+// 	src: url('../fonts/Pretendard-Regular.woff2') format('woff2'),
+// 		 url('../fonts/Pretendard-Regular.woff') format('woff');
+// }
+//EX. { font: font-style font-variant font-weight font-size/line-height font-family } 출처: https://nossodia.tistory.com/54
+ 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap'); //"Gugi", sans-serif
+
+@for $i from 1 through 9 {
+    @font-face {
+        font-family: "Noto Sans KR", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-weight: #{$i}00;
+    }
+}
+
+// List 
+@each $weight in (100, 300, 400, 500, 700, 900)  {
+    @font-face { 
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: $weight;
+    }
+    @font-face {
+        font-family: "Roboto", sans-serif;
+        font-style: italic;
+        font-weight: $weight;
+    }
+}
+
+// Map
+// @each $font, $weight in (thin: 100, light: 300, regular: 400, medium: 500, bold: 700, black: 900 ) {
+//     .roboto-#{$font} {
+//         font-family: "Roboto", sans-serif;
+//         font-style: normal;
+//         font-size: $weight;
+//     }
+//     .roboto-#{$font}-italic {
+//         font-family: "Roboto", sans-serif;
+//         font-style: italic;
+//         font-size: $weight;
+//     }
+// }

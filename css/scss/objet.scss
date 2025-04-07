@@ -1,0 +1,236 @@
+
+//공통요소 기본 설정 상단 skip / ellipsis / toggle menu / tabmenu / focus color
+
+/* skipMenu */
+#skipNav { position: relative; z-index:99999;
+	a {
+		display: block;
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		overflow: hidden;
+		text-align: center;
+		//color: #000;
+		white-space: nowrap;
+		&:active, &:focus {
+			position: fixed;
+			// top: 10%;
+            top: 0;
+			left: 0;
+			height: auto;
+			width: 100%;
+			animation: skip .5s;
+		}
+	}
+}	
+@keyframes skip {
+	0% { opacity:0; width:0; }
+	100% { opacity:1; width: 100%; }
+}
+
+/*ellipsis*/
+@mixin ellipsis { text-overflow: ellipsis; overflow:hidden; max-width:100%; }
+@for $i from 1 through 4 {
+	.ellipsis#{$i} {
+		@include ellipsis; 
+		@if $i == 1 {
+			white-space: nowrap; 
+		} @else {
+			word-break: break-word; display: -webkit-box; -webkit-line-clamp: #{$i}; line-clamp: #{$i}; -webkit-box-orient: vertical;
+		}
+	}
+}
+
+/*toggle*/
+.toggle { 
+	border:1px solid transparent;
+	display:flex; 
+	position:relative;
+	a, button {
+		display:flex;
+		width: 100%;
+		padding:0 10px;
+		align-items: center;
+		color:transparent;
+        background:none;
+        cursor:pointer; 
+	}
+	> a, > button {
+		justify-content: flex-end;
+		height:40px;
+		span { margin-right:auto; color:inherit; }
+		svg { width:12px; display:block; float:right; transform:rotate(180deg);
+			path { fill:inherit; }
+		}
+	}
+	> ul {
+		display:none;
+		box-sizing:unset;
+		position:absolute; 
+		top:100%;
+		left:-1px;
+		width: 100%;
+		border:1px solid transparent;
+		> li a { 
+			height:30px;
+			font-size:13px;
+		}
+	}
+	&.on svg { transform:rotate(0); }
+}
+
+/*tabMenu*/
+[role=tablist] { display:flex; }
+[role=tabpanel] { display:none; }
+[role=tabpanel].active { display:block; }
+//////////
+[role=tabpanel] ul { display:flex; gap:10px; }
+[role=tabpanel] li { width:50%; }
+[role=tabpanel] img { width:100%; }
+
+/*table */
+table { 
+    border-top:2px solid transparent; 
+    border-bottom:1px solid transparent; 
+    th, td {
+        border-top:1px solid transparent; 
+        padding:5px;
+    }
+    tr:hover, tr:focus { 
+        background:rgba(156, 156, 156, 0.1); 
+    }
+} 
+
+//tab focus color
+//a:focus-within
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible,
+label:has(input:focus) { animation: shadows 1.5s infinite forwards; }
+ 
+//Map
+@keyframes shadows {
+    @each $percent, $focus_color in ("0%, 25%": #48abe0, "50%": blueviolet, "75%": rebeccapurple, "100%": #48abe0) {
+        #{$percent} {
+            text-shadow: $focus_color 0 0 1px; 
+            box-shadow: 0px 0px 3px 1px $focus_color; 
+        }
+    }
+} 
+
+/*modal*/
+.modal { 
+	position:fixed; 
+	top:0; 
+	left:0; 
+	width: 100%; 
+	height: 100%; 
+	z-index:100; 
+	.modal-content { 
+		position:fixed; 
+		top:43%;
+		left:50%; 
+		transform:translate(-50%, -50%); 
+		//background:#fff; 
+		z-index:2; 
+		//max-width:500px; 
+		width: 90%; 
+		border-radius:5px; 
+		//box-shadow:0 0 5px rgba(0,0,0,.5); 
+		transition:all .3s;
+		.modal-header { 
+			width:100%; 
+			height: 50px; 
+			border-bottom:1px solid transparent; 
+			box-sizing:border-box; 
+			padding:0 10px; 
+			display:flex; 
+			justify-content: flex-start;
+			align-items:center; 
+			button { 
+				background:none; 
+				margin-left:auto;
+				svg { width:25px; }
+			}
+		}
+		.modal-body { padding:5px; max-height:60vh; overflow-y:auto; }
+		.modal-footer { 
+			height:30px;
+			padding:10px;
+			display:flex;
+			align-items:center; 
+			justify-content:flex-end; 
+			button { 
+				float:right; 
+				margin-left:5px; 
+			}
+		}
+	}
+	&.on .modal-content {
+		top:48%;
+		animation: slidein .3s;
+	}
+}
+
+@keyframes slidein {
+	0% { top:43%; }
+	100% { top:48%; }
+}
+
+//오늘하루보지않기
+.todayPopup {
+	position:fixed; 
+	top:0; 
+	left:0; 
+	width: 100%; 
+	height: 100%; 
+	z-index:100; 
+	.content {
+		position:fixed; 
+		gap:10px;
+		top:48%; 
+		left:50%; 
+		transform:translate(-50%, -50%); 
+		background:#fff; 
+		z-index:2; 
+		max-width:500px; 
+		width: 90%; 
+		border-radius:5px; 
+		box-sizing:border-box;
+		padding:0 0 20px; 
+		//box-shadow:0 0 5px rgba(0,0,0,.5); 
+		.btn { 
+			float:right; 
+			margin-top:-35px;
+			border:none;
+			padding:0;
+			width: 25px;
+			height: 25px;
+			svg {
+				width: 25px;
+				height: 25px;
+			}
+		}
+		h3 { margin:250px 0; text-align:center; }
+		.today_chk {  
+			padding:0 20px;
+			label { 
+				display:inline-block; 
+				span { }
+				input[type='checkbox'] + span::after { margin-left:5px; }
+			}
+		} 
+	}
+}
+
+//form
+fieldset { border:1px solid #ddd; margin:20px 0; padding:20px; }
+
+
+/*센터정렬*/
+.wid_list { display:flex; gap:15px; align-items: center; flex-wrap: wrap; }
+.vertical { flex-direction: column; align-items: flex-start; }
+
+.btn { padding:5px; color:#000; background:none; border-radius:5px; cursor:pointer; }

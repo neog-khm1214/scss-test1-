@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>inc ex guide</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”keywords” content="scss">
+    <meta name=“description” content="페이지목록 나열">
+
+    <link href="./css/common.css" rel="stylesheet">
+    <script src="./js/wai-aria.ui.js"></script>
+
+    <script defer src="./js/common.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark-dimmed.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+
+    <!-- jQuery 라이브러리 포함 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery Lazy 플러그인 포함 -->
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery-lazyload@1.9.7/jquery.lazyload.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        // jQuery 버전 1.x 사용
+        var $j12 = jQuery.noConflict(true);
+        $j12(document).ready(function () {
+            $j12("h1").click(function () {
+                $j12("h1").text("jQuery 버전 1.x로 변경된 내용입니다.");
+            });
+        });
+    </script> -->
+</head>
+
+<body>
+    <!-- role 역할 / -->
+    <!-- aria-haspopup TRUE 활성화 / aria-hidden="true" 숨김 //   aria-controls 제어하는 하위메뉴에 대한 id 값 적용
+     aria-haspopup 속성의 종류
+    true: 해당 요소가 팝업을 트리거할 수 있다는 것을 나타낸다.
+    false: 해당 요소가 팝업을 트리거할 수 없다는 것을 나타낸다. / 기본값, 연결된 팝업 없음
+    menu: 해당 요소가 메뉴를 트리거할 수 있다는 것을 나타낸다.
+    listbox: 해당 요소가 목록 상자를 트리거할 수 있다는 것을 나타낸다. /선택 목록 팝업 있음
+    tree: 해당 요소가 트리를 트리거할 수 있다는 것을 나타낸다.
+    grid: 해당 요소가 그리드를 트리거할 수 있다는 것을 나타낸다.
+    dialog: 해당 요소가 대화 상자를 트리거할 수 있다는 것을 나타낸다.
+
+    aria-expanded
+    true : 확장
+    false : 축소
+
+    aria-selected
+    true : 선택됨
+    false : 선택 안됨
+
+    aria-labelledby : 그룹명(이 역할하는 그룹에 속함)
+    aria-label : 이름표(이 역할함함)
+    aria-haspopup="true" : 버튼 클릭시 팝업 유무 확인 
+     -->
+    <div id="wrap">
+        <div class="include-html" data-include-path="./inc/header.html"></div>
+        <div class="content" id="cont" role="main">
+            <article class="box img">
+                <h3>test</h3>
+                <div class="inner">
+                    <div class="imgBox">
+                        <img loading='lazy' src="https://imagescdn.gettyimagesbank.com/500/202202/jv12532345.jpg"
+                            alt="">
+                    </div>
+                </div>
+            </article>
+            <article class="box icon">
+                <h3>아이콘메뉴(타이틀미사용시)</h3>
+                <div class="inner">
+                    <button type="button">
+                        <svg width="50px" height="50px" viewBox="-2 -2 24.00 24.00">
+                            <path
+                                d="M18 5a1 1 0 100-2H2a1 1 0 000 2h16zm-4 4a1 1 0 100-2H6a1 1 0 100 2h8zm5 3a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-5 5a1 1 0 100-2H6a1 1 0 100 2h8z" />
+                        </svg>
+                        <span class="blind">아이콘메뉴</span>
+                    </button>
+                </div>
+            </article>
+            <article class="box">
+                <h3>좌우포커스 탭메뉴</h3>
+                <div class="">
+                    <ul role="tablist">
+                        <li role="none">
+                            <a href="#" id="ui" role="tab" aria-selected="true" aria-controls="tab_ui"
+                                tabindex="0">메뉴1</a>
+                        </li>
+                        <li role="none">
+                            <a href="#" id="ac" role="tab" aria-selected="false" aria-controls="tab_ac"
+                                tabindex="-1">메뉴2</a>
+                        </li>
+                    </ul>
+                    <div class="active" id="tab_ui" role="tabpanel" aria-labelledby="ui" tabindex="0">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <figure>
+                                        <img loading='lazy'
+                                            src="https://nuli.navercorp.com/upload/2021/9d0fc1b0-dbb7-4427-93fa-b1b28a5da0b3_article_banner2.jpg"
+                                            alt="예시1-1">
+                                        <figcaption>내용 설명 제목1</figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <figure>
+                                        <img loading='lazy'
+                                            src="https://nuli.navercorp.com/upload/2021/53e47530-571f-4b59-8641-a9a59dcb4298_article_banner1.jpg"
+                                            alt="예시1-2">
+                                        <figcaption>내용 설명 제목1-2</figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="" id="tab_ac" role="tabpanel" aria-labelledby="ac" tabindex="0">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <figure>
+                                        <img src="https://nuli.navercorp.com/upload/2020/039d9a80-b4c3-4ad7-a2dd-e0f67a096688_article_banner3.jpg"
+                                            alt="예시2-1">
+                                        <figcaption>내용 설명 제목2</figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <figure>
+                                        <img src="https://nuli.navercorp.com/upload/2021/9d0fc1b0-dbb7-4427-93fa-b1b28a5da0b3_article_banner2.jpg"
+                                            alt="예시2-2">
+                                        <figcaption>내용 설명 제목2-2</figcaption>
+                                    </figure>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            <article class="box">
+                <h3>테이블표</h3>
+                <h4 id="testTable" class="blind">테스트 목록</h4>
+                <table class="tbl table-dark table-striped" aria-labelledby="testTable" role="testTable"
+                    aria-label="테스트테이블 목록">
+                    <caption>테스트테이블 목록</caption>
+                    <!-- <colgroup>
+                    <col width="20%" />
+                </colgroup> -->
+                    <thead>
+                        <tr tabindex="0">
+                            <th scope="col">메뉴1</th>
+                            <th>메뉴2</th>
+                            <th>메뉴3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tabindex="0">
+                            <td>값1-1</td>
+                            <td>값1-2</td>
+                            <td>값1-3</td>
+                        </tr>
+                        <tr tabindex="0">
+                            <td>값2-1</td>
+                            <td>값2-2</td>
+                            <td>값2-3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article class="box ">
+                <h3>search form</h3>
+                <form role="search">
+                    <fieldset>
+                        <legend>검색</legend>
+                        <div>
+                            <input type="search" aria-label="검색어 입력" id="_word" name="_word" title="검색어 입력"
+                                placeholder="검색어를 입력해 주세요.">
+                            <button onclick="">검색</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <form role="form">
+                    <fieldset>
+                        <legend>input</legend>
+                        <div>
+                            <textarea name="" id="" placeholder="입력" class="w100"></textarea>
+                        </div>
+                        <!-- Radio Buttons -->
+                        <div>
+                            <p class="link">
+                                input style :
+                                <a href="https://www.cssscript.com/demo/csscss3-custom-checkboxes-radios-switches-el-checkbox/"
+                                    target="_blank">참고1</a>, <a
+                                    href="https://www.cssscript.com/demo/checkbox-radio-button-bulma/"
+                                    target="_blank">참고2</a>
+                            </p>
+                            <div class="inputBox">
+                                <h4>Radio</h4>
+                                <div class="wid_list mt10" role="group" aria-labelledby="group_chk">
+                                    <label class="rdo is-disabled" disabled>
+                                        <input type="radio" name="group_default1" value="disabled" checked="">
+                                        <span class="check"></span>
+                                        <span class="control-label">Disabled</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="Default" checked="">
+                                        <span class="check"></span>
+                                        <span class="control-label">Default</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-dark"></span>
+                                        <span class="control-label">dark</span>
+                                    </label>
+                                    <label class="rdo" style="background:rgb(190, 245, 247);">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-white"></span>
+                                        <span class="control-label">white</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-link"></span>
+                                        <span class="control-label">blue</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-info"></span>
+                                        <span class="control-label">blue2</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-success"></span>
+                                        <span class="control-label">green2</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-warning"></span>
+                                        <span class="control-label">yellow</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default1" value="" checked="">
+                                        <span class="check is-danger"></span>
+                                        <span class="control-label">red</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="inputBox">
+                                <h4>Radio Sizes</h4>
+                                <div class="wid_list vertical mt10" role="group" aria-labelledby="group_chk">
+                                    <label class="rdo is-small">
+                                        <input type="radio" name="group_default" value="Default" checked="">
+                                        <span class="check"></span>
+                                        <span class="control-label">Default</span>
+                                    </label>
+                                    <label class="rdo">
+                                        <input type="radio" name="group_default" value="Default" checked="">
+                                        <span class="check"></span>
+                                        <span class="control-label">Default</span>
+                                    </label>
+                                    <label class="rdo is-medium">
+                                        <input type="radio" name="group_default" value="" checked="">
+                                        <span class="check is-link"></span>
+                                        <span class="control-label">blue</span>
+                                    </label>
+                                    <label class="rdo is-large">
+                                        <input type="radio" name="group_default" value="" checked="">
+                                        <span class="check is-danger"></span>
+                                        <span class="control-label">red</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- checkbox Buttons -->
+                        <div class="inputBox">
+                            <h4>Checkbox</h4>
+                            <div class="wid_list mt10" role="group" aria-labelledby="group_chk">
+                                <label class="chk is-disabled" disabled>
+                                    <input type="checkbox" disabled value="false">
+                                    <span class="check"></span>
+                                    <span class="control-label">Disabled</span>
+                                </label>
+                                <label class="chk is-large">
+                                    <input type="checkbox" value="false" class="is-indeterminate">
+                                    <span class="check "></span>
+                                    <span class="control-label">Indeterminate</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" class="is-indeterminate">
+                                    <span class="check is-dark"></span>
+                                    <span class="control-label">Indeterminate</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false">
+                                    <span class="check"></span>
+                                    <span class="control-label">Basic</span>
+                                </label>
+                                <label class="chk ">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-dark"></span>
+                                    <span class="control-label">Basic dark</span>
+                                </label>
+                                <label class="chk" style="background:rgb(190, 245, 247);">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-white"></span>
+                                    <span class="control-label">Basic white</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-link"></span>
+                                    <span class="control-label">Basic blue</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-info"></span>
+                                    <span class="control-label">Basic blue2</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-success"></span>
+                                    <span class="control-label">Basic green2</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-warning"></span>
+                                    <span class="control-label">Basic yellow</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-danger"></span>
+                                    <span class="control-label">Basic red</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="inputBox">
+                            <h4>Checkbox Sizes</h4>
+                            <div class="wid_list vertical mt10" role="group" aria-labelledby="group_chk">
+                                <label class="chk is-small">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-success"></span>
+                                    <span class="control-label">Basic green2</span>
+                                </label>
+                                <label class="chk">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-info"></span>
+                                    <span class="control-label">Basic blue2</span>
+                                </label>
+                                <label class="chk is-medium">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-dark"></span>
+                                    <span class="control-label">Basic dark</span>
+                                </label>
+                                <label class="chk is-large">
+                                    <input type="checkbox" value="false" checked>
+                                    <span class="check is-danger"></span>
+                                    <span class="control-label">Basic red</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Switch Buttons -->
+                        <div class="inputBox">
+                            <h4>Switch toggle</h4>
+                            <div class="wid_list mt10" role="group" aria-labelledby="group_sw">
+                                <label class="sw">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw">
+                                    <input role="switch" type="checkbox" disabled />
+                                    <span class="control-label">알람 (비활성화)</span>
+                                </label>
+                            </div>
+                            <div class="wid_list mt10" role="group" aria-labelledby="group_sw">
+                                <label class="sw is-black ">
+                                    <input role="switch" type="checkbox" checked />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw">
+                                    <input role="switch" type="checkbox" disabled />
+                                    <span class="control-label">알람 (비활성화)</span>
+                                </label>
+                            </div>
+                            <div class="wid_list mt10" role="group" aria-labelledby="group_sw">
+                                <label class="sw is-link">
+                                    <input role="switch" type="checkbox" checked disabled />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw is-success">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw is-warning">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw is-danger">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw">
+                                    <input role="switch" type="checkbox" disabled />
+                                    <span class="control-label">알람 (비활성화)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="inputBox">
+                            <h4>Switch toggle</h4>
+                            <div class="wid_list vertical mt10" role="group" aria-labelledby="group_sw">
+                                <label class="sw is-black is-small">
+                                    <input role="switch" type="checkbox" checked />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw is-warning">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw is-danger is-medium">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                                <label class="sw is-success is-large">
+                                    <input role="switch" type="checkbox" />
+                                    <span class="control-label">알람</span>
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>
+            <article class="box">
+                <h3>팝업</h3>
+                <!-- Button trigger modal -->
+                <p class="mb5">이미지 1장 일때 : <button type="button" class="btn modal_btn" data-popup="img_modal"
+                        aria-haspopup="true"
+                        data-href="https://cdn.pixabay.com/photo/2020/12/05/15/55/christmas-tree-5806329_1280.jpg">모달팝업1</button>
+                </p>
+                <p class="mb5">이미지 높이값 길때 : <button type="button" class="btn modal_btn" data-popup="img_modal2"
+                        aria-haspopup="true"
+                        data-href="https://www.dongduk.ac.kr/ncmsrsc/templete/www01/img/sub/pri_new_01.png">모달팝업_이미지높이값</button>
+                </p>
+                <p class="mb5">텍스트 한줄공지 : <button type="button" class="btn modal_btn" data-popup="text_modal"
+                        aria-haspopup="true" data-text="텍스트공지입니다.">모달팝업2</button></p>
+                <p>컨텐츠내용이 있을때 : <button type="button" class="btn modal_btn" data-popup="modal"
+                        aria-haspopup="true">모달팝업3</button></p>
+                <div hidden data-name="modal" class="popupCont">
+                    <h3>컨텐츠내용</h3>
+                    <p>test test tes test etstetet</p>
+                    <p>test test tes test etstetet</p>
+                    <p>test test tes test etstetet</p>
+                </div>
+                <!-- Modal dimm popup 1개로 적용 -->
+                <div class="modal" id="" aria-labelledby="modalLabel" aria-hidden="true" tabindex="-1">
+                    <div class="modal-content" tabindex="0">
+                        <div class="modal-header">
+                            <h1 class="modal-title" id="exmodalLabel">Modal title</h1>
+                            <button type="button" class="close" aria-label="close">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                    <path fill="#333"
+                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!--내용적용-->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn close" aria-label="close">Close</button>
+                            <button type="button" class="btn">Save</button>
+                        </div>
+                    </div>
+                    <div class="dimm"></div>
+                </div>
+                <!-- //Modal -->
+            </article>
+            <article class="box">
+                <h3>토글메뉴</h3>
+                <div class="inner">
+                    <div class="toggle">
+                        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="siteLink2"
+                            title="타이틀이 필요한가?">
+                            <span>주요사이트링크2</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="더보기">
+                                <path
+                                    d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+                            </svg>
+                        </button>
+                        <ul id="siteLink2" role="menu" aria-hidden="true" aria-label="주요사이트링크2">
+                            <li role="menuitem"><a href="http://www.naver.com" target="_blank" title="새창열기">naver</a>
+                            </li>
+                            <li role="menuitem"><a href="http://www.google.com" target="_blank" title="새창열기">google</a>
+                            </li>
+                            <li role="menuitem"><a href="http://www.bing.com" target="_blank" title="새창열기">bing</a></li>
+                        </ul>
+                    </div>
+                    <div class="toggle">
+                        <button type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="siteLink3">
+                            <span>주요사이트링크3</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="더보기">
+                                <path
+                                    d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+                            </svg>
+                        </button>
+                        <ul id="siteLink3" role="menu" aria-hidden="true" aria-label="주요사이트링크3">
+                            <li role=" menuitem"><a href="http://www.naver.com" target="_blank" title="새창열기">naver</a>
+                            </li>
+                            <li role="menuitem"><a href="http://www.google.com" target="_blank" title="새창열기">google</a>
+                            </li>
+                            <li role="menuitem"><a href="http://www.bing.com" target="_blank" title="새창열기">bing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            <article class="box ellip">
+                <h3>말줄임</h3>
+                <p class="ellipsis1">애플의 첫 번째 폴더블 아이폰은 삼성 갤럭시Z플립 시리즈처럼 가로로 접는 ‘클림셸’ 형태다. 그간 애플은 화면 내구성, 주름 문제로 인해 폴더블
+                    아이폰
+                    출시에
+                    어려움을 겪어온 것으로 알려졌다. 최근 문제를 해결했다.</p>
+                <p class="ellipsis2">애플의 첫 번째 폴더블 아이폰은 삼성 갤럭시Z플립 시리즈처럼 가로로 접는 ‘클림셸’ 형태다. 그간 애플은 화면 내구성, 주름 문제로 인해 폴더블
+                    아이폰
+                    출시에
+                    어려움을 겪어온 것으로 알려졌다. 최근 문제를 해결했다.</p>
+                <p class="ellipsis3">애플의 첫 번째 폴더블 아이폰은 삼성 갤럭시Z플립 시리즈처럼 가로로 접는 ‘클림셸’ 형태다. 그간 애플은 화면 내구성, 주름 문제로 인해 폴더블
+                    아이폰
+                    출시에
+                    어려움을 겪어온 것으로 알려졌다. 최근 문제를 해결했다.</p>
+                <p class="ellipsis4">애플의 첫 번째 폴더블 아이폰은 삼성 갤럭시Z플립 시리즈처럼 가로로 접는 ‘클림셸’ 형태다. 그간 애플은 화면 내구성, 주름 문제로 인해 폴더블
+                    아이폰
+                    출시에
+                    어려움을 겪어온 것으로 알려졌다. 최근 문제를 해결했다.</p>
+            </article>
+            <article class="box">
+                <h3>링크</h3>
+                <div class="inner link">
+                    <a href="https://www.naver.com" target="_blank" title="새창열기">새창 바로가기</a>
+                    <a href="/img/sch_img.jpg" role="button" download="이거슨이미지.jpg" title="다운로드">이미지 다운로드</a>
+                    <a href="https://www.w3schools.com/images/myw3schoolsimage.jpg" download
+                        style="text-align:center;"><img src="https://www.w3schools.com/images/myw3schoolsimage.jpg"
+                            alt="W3Schools" width="40"><br>절대경로는 download 안됨</a>
+                    <a href="/img/sch_img.jpg" download style="text-align:center;"><img
+                            src="https://www.w3schools.com/images/myw3schoolsimage.jpg" alt="W3Schools"
+                            width="40"><br>상대경로는 download 됨</a>
+                </div>
+            </article>
+            <figure class="img">
+                <img loading='lazy' src="https://www.google.com/logos/2024/moon/novr2/cta.png" alt="img">
+                <figcaption>이미지 관련 내용</figcaption>
+            </figure>
+            <!--오늘하루보지않기 팝업-->
+            <div class="todayPopup" aria-labelledby="modalTodayLabel" aria-hidden="false" tabindex="0">
+                <div class="content">
+                    <button type="button" class="btn close" aria-label="close">
+                        <svg viewBox="0 0 357 357">
+                            <g>
+                                <polygon
+                                    points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 214.2,178.5" />
+                            </g>
+                        </svg>
+                    </button>
+                    <h3>오늘하루보지않기 컨텐츠내용</h3>
+                    <div class="today_chk">
+                        <label>
+                            <input type="checkbox" class="today_chk">
+                            <span>오늘 하루 보지 않기</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="dimm"></div>
+            </div>
+            <!--//오늘하루보지않기 팝업-->
+            <script>
+                $(function () {
+                    let i;
+                    for (i = 400; i < 410; i++) {
+                        $(".lazyBox").append(`<img loading='lazy' src ='https://placecats.com/${i}/${i}' width='100%' height='100%' alt=''>`);
+                    }
+                })
+            </script>
+            <style>
+                .lazyBox img {
+                    width: 500px;
+                    height: auto;
+                }
+            </style>
+            <article class="lazyBox">
+            </article>
+
+            <!-- <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/1.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/2.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/3.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/4.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/5.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/6.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/7.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/8.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/9.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/1.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/2.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/3.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/4.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/5.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/6.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/7.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/8.jpg?t=1739340393">
+            <img loading='lazy' src="http://jquery.eisbehr.de/lazy/images/9.jpg?t=1739340393"> -->
+
+            <article class="box">
+                <h3>프로그레스바</h3>
+                <progress max="100" value="70"></progress>
+                <progress max="100" value="20"></progress>
+            </article>
+            <style>
+                progress {
+                    width: 100%;
+                    height: 10px;
+                    border: none;
+                }
+
+                progress::-webkit-progress-bar {
+                    background: #f3f3f3;
+                }
+
+                progress::-webkit-progress-value {
+                    background: rgb(240, 76, 117);
+                }
+
+                progress::-moz-progress-bar {
+                    background: rgb(240, 76, 117);
+                }
+            </style>
+        </div>
+        <div class="include-html" data-include-path="./inc/footer.html"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+/*color*/
+//!global - 지역 > 전역
+//!default - 변수값 재설정 !important와 동일
+$color-bk: #000;
+$color-wh: #fff;
+$color-default: #333;
+
+$color-gy: #cbcbcb;
+$color-dkgy: #3d3d3d;
+$color-red: #ff0000;
+$color-skyblue: skyblue;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*mediaquery*/
+// @forward '../common/_colors styles
+//https://chaewonkong.github.io/posts/scss-media-query.html 참고
+// Breakpoints
+$desktop: 1024px;
+$tablet: 768px;
+$mobile: 480px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media (max-width: #{$tablet - 1px}) {
+        @content;
+    }
+}
+
+@mixin responsive {//모바일, 태블릿 공통
+    @media (max-width: #{$desktop - 1px}) {
+        @content;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*reset font, color */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video, input, textarea, button {
+    color: $color-default;
+    font:15px/1.4 "Noto Sans KR", sans-serif;
+
+    @include mobile {
+        font-size:13px; 
+    }
+}
+//form
+input,
+textarea { border-color: $color-gy; }
+
+//placeholder
+*::placeholder { color: $color-gy; }
+
+//scroll style
+::-webkit-scrollbar-thumb { background: $color-bk; }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//dark mode
+
+.darkMode { 
+    background:$color-bk; 
+    a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video, input, textarea, button { color:$color-wh; } 
+
+    //scroll style
+    ::-webkit-scrollbar-thumb { background: $color-wh; }
+}

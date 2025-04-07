@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+//@use "variables.scss" as d; // 변수 가져오기 및 변수명설정 가능 
+@import "reset", "objet", "input", "variables";
+
+/*custom*/
+#skipNav a {
+    &:active, &:focus {
+        //top: 10%;
+        padding: 15px;
+        //border-radius:0 15px 15px 0;
+        background: $color-dkgy;
+        color: $color-wh;
+        font-weight: 700;
+    }
+}
+
+.ellip {
+    p {
+        width:350px; 
+        border:2px solid $color-gy; 
+        margin:10px 0; 
+    }
+}
+
+.toggle { 
+    border-color: $color-bk;
+    color: $color-bk;
+    width:220px;
+    a, button { 
+        color: $color-bk; 
+        box-sizing:border-box;
+    }
+    > a, > button { height:40px; 
+        svg path { fill: $color-bk; }
+    }
+    > ul { 
+        border-color: $color-bk; 
+        background: $color-wh;
+        > li a { height:30px; font-size:13px; }
+    }
+}
+
+table { 
+    width: 100%;
+    border-color: $color-gy; 
+    th, td { 
+        border-color: $color-gy; 
+        //padding:5px;
+    }
+    tr:hover, tr:focus { 
+        //background:rgba(156, 156, 156, 0.1); 
+    }
+}
+/*modal*/
+.modal { 
+	.modal-content { 
+		background:$color-wh; 
+		max-width:500px; 
+		box-shadow:0 0 5px rgba(0,0,0,.5);
+        color:$color-bk;
+    }
+    .modal-header {
+        border-color:$color-gy !important;  
+        .modal-title { color:$color-bk; }
+    }
+    .modal-body { color:$color-bk; }
+}
+
+
+
+.darkMode { 
+    .toggle { 
+    border-color: $color-wh;
+    color: $color-wh;
+    a, button { 
+        color: $color-wh; 
+        svg path { fill: $color-wh; }
+    }
+    > ul { 
+        border-color: $color-wh; 
+        background: $color-bk;
+    }
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////
+
+//헤더, 푸터, 레이아웃 공통  / 
+.header { 
+    height:100px; 
+    background:#eee;
+    display:flex;
+    align-items: flex-end;
+    box-sizing:border-box; 
+    padding:10px;
+    gap:20px;
+    position: sticky;
+    top:0;
+    z-index:10;
+    h1 { 
+        a { display:block;
+            width:60px; 
+            height:75px;
+            background: url(https://i.namu.wiki/i/spYbAJcQYMR-FQ0fdEbuY0MvPuax1WHswJoVsX2ZhH62YOZedLIgl992CRe-CZd6yvVLL7zHveV2iRVbBVYsUA.svg) right top / auto 170% no-repeat; 
+        }
+    }
+    #gnb { 
+        display:flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap:20px;
+        > li {
+            position:relative;
+            > a {
+               font: 35px "Gugi", sans-serif;
+            }
+            > ul { 
+                display:none;
+                position:absolute;
+                left:50%; 
+                transform:translateX(-50%);
+                border:1px solid $color-dkgy;
+                background: $color-wh;
+                width:100px;
+            }
+        }
+        a { color: $color-default; }
+    }
+    .list { display:none; }
+    .dark-mode { 
+        position:absolute; 
+        top:15px; 
+        right:15px; 
+        // flex: 0 1 auto;
+        // margin-left:auto;
+        .sw {
+            input[type=checkbox] { 
+                padding:8px; width:30px; 
+                &:checked + .control-label { 
+                    color:$color-bk; 
+                }
+            } 
+        } 
+    }
+} 
+
+.footer {
+    background: $color-dkgy; padding-bottom:120px;
+    h3 { color: $color-wh; }
+    .toggle { 
+        border-color: $color-wh;
+        color: $color-wh;
+        /*width:220px;*/
+        a { color: $color-wh; }
+        > a, > button { /*height:40px; */ 
+            svg path { fill: $color-wh; }
+        }
+        > ul { 
+            border-color: $color-wh; 
+            //background: $color-wh;
+            background:transparent;
+            > li a { /*height:30px; font-size:13px;*/ color: $color-wh; }
+        } 
+    }
+} 
+
+.box {
+    padding:20px; 
+    h3 { font-size:20px; font-weight: 700; margin:15px 0; }
+    .inner { display:flex; gap:10px; }
+    &:after { content:""; display:block; }
+}
+
+.inputBox {
+    h4 { 
+        margin-top:10px; 
+        font-weight: 700; 
+        &:before { 
+            content:"▶";
+            padding-right:2px;
+        }
+    }
+    .field { margin:8px 0; }
+}
+
+.box.icon { 
+    button { 
+        background:#fff;
+        svg {
+            //width:35px; height:35px;
+         path { background:$color-dkgy; }
+        }
+    }
+}
+
+.link a { display:inline-block; color:red;
+    &:hover { color:blue; }
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+/*test*/
+.imgBox {
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 5;
+        transition: all .3s;
+    }
+    &.on:before {
+        width: 0;
+    }
+}
+ 
+////////////////////////////////////////////////////////////////////////////
+
+//responsive
+@include responsive {
+    .header { 
+        #gnb { display:none; }
+        .list { display:block; float:right; }
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////

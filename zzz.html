@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 움직여야할 부모 엘리먼트를 받아온다.
+        const moveElement = document.querySelector('.slide-wrapper');
+        // 스크롤 값에 따라 translate하기위해 필요한 height 값
+        const moveElementHeight = moveElement.getBoundingClientRect().height;
+        const bodyHeight = document.body.getBoundingClientRect().height;
+
+        window.addEventListener('scroll', () => {
+            moveElement.style.transform = `translateX(${(window.scrollY) / (bodyHeight - moveElementHeight) * -100}%)`;
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slide-wrapper {
+            position: fixed;
+            display: flex;
+            list-style-type: none;
+            /* will-change 부분!*/
+            will-change: transform;
+        }
+
+        .slide-wrapper li {
+            width: 100vw;
+            height: 100vh;
+            background-color: skyblue;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 32px;
+        }
+
+        .fake-area {
+            height: 5000px;
+        }
+    </style>
+    <ul class="slide-wrapper">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <!--스크롤 만들기 위해서 가짜 영역 만들기 -->
+    <div class="fake-area"></div>
+</body>
+
+</html>

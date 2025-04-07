@@ -1,0 +1,329 @@
+@charset "UTF-8";
+/* skipMenu */
+#skipNav {
+  position: relative;
+  z-index: 99999;
+}
+#skipNav a {
+  display: block;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+}
+#skipNav a:active, #skipNav a:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100%;
+  animation: skip 0.5s;
+}
+
+@keyframes skip {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+/*ellipsis*/
+.ellipsis1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.ellipsis2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsis3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsis4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/*toggle*/
+.toggle {
+  border: 1px solid transparent;
+  display: flex;
+  position: relative;
+}
+.toggle a, .toggle button {
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+  align-items: center;
+  color: transparent;
+  background: none;
+  cursor: pointer;
+}
+.toggle > a, .toggle > button {
+  justify-content: flex-end;
+  height: 40px;
+}
+.toggle > a span, .toggle > button span {
+  margin-right: auto;
+  color: inherit;
+}
+.toggle > a svg, .toggle > button svg {
+  width: 12px;
+  display: block;
+  float: right;
+  transform: rotate(180deg);
+}
+.toggle > a svg path, .toggle > button svg path {
+  fill: inherit;
+}
+.toggle > ul {
+  display: none;
+  box-sizing: unset;
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: 100%;
+  border: 1px solid transparent;
+}
+.toggle > ul > li a {
+  height: 30px;
+  font-size: 13px;
+}
+.toggle.on svg {
+  transform: rotate(0);
+}
+
+/*tabMenu*/
+[role=tablist] {
+  display: flex;
+}
+
+[role=tabpanel] {
+  display: none;
+}
+
+[role=tabpanel].active {
+  display: block;
+}
+
+[role=tabpanel] ul {
+  display: flex;
+  gap: 10px;
+}
+
+[role=tabpanel] li {
+  width: 50%;
+}
+
+[role=tabpanel] img {
+  width: 100%;
+}
+
+/*table */
+table {
+  border-top: 2px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table th, table td {
+  border-top: 1px solid transparent;
+  padding: 5px;
+}
+table tr:hover, table tr:focus {
+  background: rgba(156, 156, 156, 0.1);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible,
+label:has(input:focus) {
+  animation: shadows 1.5s infinite forwards;
+}
+
+@keyframes shadows {
+  0%, 25% {
+    text-shadow: #48abe0 0 0 1px;
+    box-shadow: 0px 0px 3px 1px #48abe0;
+  }
+  50% {
+    text-shadow: blueviolet 0 0 1px;
+    box-shadow: 0px 0px 3px 1px blueviolet;
+  }
+  75% {
+    text-shadow: rebeccapurple 0 0 1px;
+    box-shadow: 0px 0px 3px 1px rebeccapurple;
+  }
+  100% {
+    text-shadow: #48abe0 0 0 1px;
+    box-shadow: 0px 0px 3px 1px #48abe0;
+  }
+}
+/*modal*/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.modal .modal-content {
+  position: fixed;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90%;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.modal .modal-content .modal-header {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid transparent;
+  box-sizing: border-box;
+  padding: 0 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.modal .modal-content .modal-header button {
+  background: none;
+  margin-left: auto;
+}
+.modal .modal-content .modal-header button svg {
+  width: 25px;
+}
+.modal .modal-content .modal-body {
+  padding: 5px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.modal .modal-content .modal-footer {
+  height: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.modal .modal-content .modal-footer button {
+  float: right;
+  margin-left: 5px;
+}
+.modal.on .modal-content {
+  top: 48%;
+  animation: slidein 0.3s;
+}
+
+@keyframes slidein {
+  0% {
+    top: 43%;
+  }
+  100% {
+    top: 48%;
+  }
+}
+.todayPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.todayPopup .content {
+  position: fixed;
+  gap: 10px;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  z-index: 2;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0 0 20px;
+}
+.todayPopup .content .btn {
+  float: right;
+  margin-top: -35px;
+  border: none;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+}
+.todayPopup .content .btn svg {
+  width: 25px;
+  height: 25px;
+}
+.todayPopup .content h3 {
+  margin: 250px 0;
+  text-align: center;
+}
+.todayPopup .content .today_chk {
+  padding: 0 20px;
+}
+.todayPopup .content .today_chk label {
+  display: inline-block;
+}
+.todayPopup .content .today_chk label input[type=checkbox] + span::after {
+  margin-left: 5px;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+/*센터정렬*/
+.wid_list {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btn {
+  padding: 5px;
+  color: #000;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

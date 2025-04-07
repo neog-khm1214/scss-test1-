@@ -1,0 +1,470 @@
+@charset "UTF-8";
+@import url(font.css);
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, input, textarea, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  color: inherit;
+  font: inherit;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1;
+}
+
+menu, ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:after, blockquote:before, q:after, q:before {
+  content: "";
+  content: none;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+
+caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-indent: -99999px;
+}
+
+a, a:hover, a:focus, a.active {
+  text-decoration: none;
+  text-underline-position: under;
+}
+
+button {
+  cursor: pointer;
+}
+
+*:disabled {
+  cursor: not-allowed;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+}
+
+.show { /*display:block;*/
+  display: flex;
+}
+
+[hidden], .none, [aria-hidden=true] {
+  display: none;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+input {
+  border: 1px solid transparent;
+  padding: 5px;
+}
+
+textarea {
+  resize: none;
+  border: 1px solid transparent;
+  padding: 5px;
+  overflow: auto;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+*::placeholder {
+  color: transparent;
+}
+
+/* scroll style */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 3px solid transparent;
+}
+
+/* scroll fixed */
+.notScroll {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/*popup dimm*/
+.dimm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/*img*/
+img {
+  max-width: 100%;
+  aspect-ratio: 1; /*반응형시요소의 비율 동일하게 유지하는 속성*/
+}
+
+.mt0 {
+  margin-top: 0px !important;
+}
+
+.mb0 {
+  margin-bottom: 0px !important;
+}
+
+.pt0 {
+  padding-top: 0px !important;
+}
+
+.pb0 {
+  padding-bottom: 0px !important;
+}
+
+.mt5 {
+  margin-top: 5px !important;
+}
+
+.mb5 {
+  margin-bottom: 5px !important;
+}
+
+.pt5 {
+  padding-top: 5px !important;
+}
+
+.pb5 {
+  padding-bottom: 5px !important;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+
+.mb10 {
+  margin-bottom: 10px !important;
+}
+
+.pt10 {
+  padding-top: 10px !important;
+}
+
+.pb10 {
+  padding-bottom: 10px !important;
+}
+
+.mt15 {
+  margin-top: 15px !important;
+}
+
+.mb15 {
+  margin-bottom: 15px !important;
+}
+
+.pt15 {
+  padding-top: 15px !important;
+}
+
+.pb15 {
+  padding-bottom: 15px !important;
+}
+
+.mt20 {
+  margin-top: 20px !important;
+}
+
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+.pt20 {
+  padding-top: 20px !important;
+}
+
+.pb20 {
+  padding-bottom: 20px !important;
+}
+
+.mt25 {
+  margin-top: 25px !important;
+}
+
+.mb25 {
+  margin-bottom: 25px !important;
+}
+
+.pt25 {
+  padding-top: 25px !important;
+}
+
+.pb25 {
+  padding-bottom: 25px !important;
+}
+
+.mt30 {
+  margin-top: 30px !important;
+}
+
+.mb30 {
+  margin-bottom: 30px !important;
+}
+
+.pt30 {
+  padding-top: 30px !important;
+}
+
+.pb30 {
+  padding-bottom: 30px !important;
+}
+
+.mt35 {
+  margin-top: 35px !important;
+}
+
+.mb35 {
+  margin-bottom: 35px !important;
+}
+
+.pt35 {
+  padding-top: 35px !important;
+}
+
+.pb35 {
+  padding-bottom: 35px !important;
+}
+
+.mt40 {
+  margin-top: 40px !important;
+}
+
+.mb40 {
+  margin-bottom: 40px !important;
+}
+
+.pt40 {
+  padding-top: 40px !important;
+}
+
+.pb40 {
+  padding-bottom: 40px !important;
+}
+
+.mt45 {
+  margin-top: 45px !important;
+}
+
+.mb45 {
+  margin-bottom: 45px !important;
+}
+
+.pt45 {
+  padding-top: 45px !important;
+}
+
+.pb45 {
+  padding-bottom: 45px !important;
+}
+
+.mt50 {
+  margin-top: 50px !important;
+}
+
+.mb50 {
+  margin-bottom: 50px !important;
+}
+
+.pt50 {
+  padding-top: 50px !important;
+}
+
+.pb50 {
+  padding-bottom: 50px !important;
+}
+
+.w0 {
+  width: 100%;
+  max-width: 0% !important;
+}
+
+.w5 {
+  width: 100%;
+  max-width: 5% !important;
+}
+
+.w10 {
+  width: 100%;
+  max-width: 10% !important;
+}
+
+.w15 {
+  width: 100%;
+  max-width: 15% !important;
+}
+
+.w20 {
+  width: 100%;
+  max-width: 20% !important;
+}
+
+.w25 {
+  width: 100%;
+  max-width: 25% !important;
+}
+
+.w30 {
+  width: 100%;
+  max-width: 30% !important;
+}
+
+.w35 {
+  width: 100%;
+  max-width: 35% !important;
+}
+
+.w40 {
+  width: 100%;
+  max-width: 40% !important;
+}
+
+.w45 {
+  width: 100%;
+  max-width: 45% !important;
+}
+
+.w50 {
+  width: 100%;
+  max-width: 50% !important;
+}
+
+.w55 {
+  width: 100%;
+  max-width: 55% !important;
+}
+
+.w60 {
+  width: 100%;
+  max-width: 60% !important;
+}
+
+.w65 {
+  width: 100%;
+  max-width: 65% !important;
+}
+
+.w70 {
+  width: 100%;
+  max-width: 70% !important;
+}
+
+.w75 {
+  width: 100%;
+  max-width: 75% !important;
+}
+
+.w80 {
+  width: 100%;
+  max-width: 80% !important;
+}
+
+.w85 {
+  width: 100%;
+  max-width: 85% !important;
+}
+
+.w90 {
+  width: 100%;
+  max-width: 90% !important;
+}
+
+.w95 {
+  width: 100%;
+  max-width: 95% !important;
+}
+
+.w100 {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.fw200 {
+  font-weight: 200 !important;
+}
+
+.fw300 {
+  font-weight: 300 !important;
+}
+
+.fw400 {
+  font-weight: 400 !important;
+}
+
+.fw500 {
+  font-weight: 500 !important;
+}
+
+.fw600 {
+  font-weight: 600 !important;
+}
+
+.fw700 {
+  font-weight: 700 !important;
+}
+
+.fw800 {
+  font-weight: 800 !important;
+}
+
+.fw900 {
+  font-weight: 900 !important;
+}
+
+button {
+  all: unset;
+}

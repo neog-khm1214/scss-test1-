@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>list ex</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”keywords” content="scss">
+    <meta name=“description” content="페이지목록 나열">
+    <link href="./css/common.css" rel="stylesheet">
+    <script defer src="./js/common.js"></script>
+    <!-- AOS 라이브러리 포함 -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- jQuery 라이브러리 포함 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/jquery-lazyload@1.9.7/jquery.lazyload.min.js"></script>
+
+</head>
+
+<body>
+    <style>
+        .fixed {
+            /* background: rgb(153, 153, 218); */
+            width: 100%;
+            height: 300px;
+        }
+
+        .testCont {
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .gallery {
+            margin: 50px auto 0;
+            width: 900px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1%;
+        }
+
+        .gallery li {
+            width: 32.666%;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-sizing: border-box;
+            transition: all .3s;
+        }
+
+        .gallery li.no_screen {
+            margin-top: 200px;
+        }
+
+        .gallery li img {
+            height: 294px;
+        }
+
+        .gallery li p {
+            margin: 5px auto;
+            font-size: 15px;
+        }
+
+        button {
+            margin: 0 auto;
+            display: block;
+            width: 900px;
+            height: 45px;
+            background: black;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <div id="wrap">
+        <div class="fixed" data-aos="zoom-in"></div>
+        <div class="fixed" data-aos="zoom-in"></div>
+        <div class="fixed" data-aos="zoom-in"></div>
+        <article class="testCont">
+            <ul class="gallery">
+            </ul>
+            <button type="button" class="btn_list">클릭</button>
+        </article>
+        <div class="fixed" data-aos="zoom-in"></div>
+        <div class="fixed" data-aos="zoom-in"></div>
+        <div class="fixed" data-aos="zoom-in"></div>
+        <div class="fixed" data-aos="zoom-in"></div>
+    </div>
+    <script>
+        $(function () {
+            AOS.init({
+                startEvent: 'DOMContentLoaded',
+                throttleDelay: 99,
+                offset: '50%',
+                mirror: true,
+                anchorPlacement: 'top-bottom'
+            });
+            changeBackground();
+            getJSON();
+        });
+        function changeBackground() {
+            let box = $("#wrap > div").length;
+            for (let i = 0; i < box; i++) {
+                let red = Math.floor(Math.random() * 256);
+                let green = Math.floor(Math.random() * 256);
+                let blue = Math.floor(Math.random() * 256);
+                $("#wrap > div").eq(i).css("background", "rgb(" + red + ", " + green + ", " + blue + ")");
+            }
+        }
+
+        function getJSON() {
+            $.ajax({
+                type: 'get',
+                url: './js/test.json',
+                dataType: 'json',
+                //contentType: 'application/json; charset=utf-8',
+                //data: JSON.stringify(data) // stringify - Json 으로 변환
+            }).done(function (data) {
+                str = '';
+                $.each(data, function (i) {
+                    str += '<li data-aos="fade-up">'
+                    str += '<img src=' + data[i].src + ' alt="img" width="100%" height="100%" loading="lazy">'
+                    str += '<p>Miyaong' + data[i].id + '</p>'
+                    str += '</li>';
+                });
+                $('.gallery').append(str);
+                $(".gallery li:gt(2)").hide().addClass('no_screen');
+                let j = 3;
+                let li = $(".gallery li").length;
+                $(".btn_list").click(function () {
+                    j = j + 6;
+                    $(`.gallery li:lt(${j})`).show().removeClass('no_screen');
+                    if (j >= li) {
+                        $(".btn_list").hide();
+                    }
+                    AOS.refresh();
+                    //AOS.refreshHard();
+                })
+            }).fail(function () {
+                console.log("에러");
+            }).always(function () {
+
+            });
+        }
+    </script>
+</body>
+
+</html>

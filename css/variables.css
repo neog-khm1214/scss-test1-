@@ -1,0 +1,35 @@
+/*color*/
+/*mediaquery*/
+/*reset font, color */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, input, textarea, button {
+  color: #333;
+  font: 15px/1.4 "Noto Sans KR", sans-serif;
+}
+@media (max-width: 767px) {
+  a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, input, textarea, button {
+    font-size: 13px;
+  }
+}
+
+input,
+textarea {
+  border-color: #cbcbcb;
+}
+
+*::placeholder {
+  color: #cbcbcb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+.darkMode {
+  background: #000;
+}
+.darkMode a, .darkMode abbr, .darkMode acronym, .darkMode address, .darkMode applet, .darkMode article, .darkMode aside, .darkMode audio, .darkMode b, .darkMode big, .darkMode blockquote, .darkMode body, .darkMode canvas, .darkMode caption, .darkMode center, .darkMode cite, .darkMode code, .darkMode dd, .darkMode del, .darkMode details, .darkMode dfn, .darkMode div, .darkMode dl, .darkMode dt, .darkMode em, .darkMode embed, .darkMode fieldset, .darkMode figcaption, .darkMode figure, .darkMode footer, .darkMode form, .darkMode h1, .darkMode h2, .darkMode h3, .darkMode h4, .darkMode h5, .darkMode h6, .darkMode header, .darkMode hgroup, .darkMode html, .darkMode i, .darkMode iframe, .darkMode img, .darkMode ins, .darkMode kbd, .darkMode label, .darkMode legend, .darkMode li, .darkMode main, .darkMode mark, .darkMode menu, .darkMode nav, .darkMode object, .darkMode ol, .darkMode output, .darkMode p, .darkMode pre, .darkMode q, .darkMode ruby, .darkMode s, .darkMode samp, .darkMode section, .darkMode small, .darkMode span, .darkMode strike, .darkMode strong, .darkMode sub, .darkMode summary, .darkMode sup, .darkMode table, .darkMode tbody, .darkMode td, .darkMode tfoot, .darkMode th, .darkMode thead, .darkMode time, .darkMode tr, .darkMode tt, .darkMode u, .darkMode ul, .darkMode var, .darkMode video, .darkMode input, .darkMode textarea, .darkMode button {
+  color: #fff;
+}
+.darkMode ::-webkit-scrollbar-thumb {
+  background: #fff;
+}
