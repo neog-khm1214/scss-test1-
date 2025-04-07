@@ -12,8 +12,10 @@ body {
 }
 
 .fade-in {
+    transition: none;
     opacity: 1;
     .fade-out {
+        transition: opacity $secondAll+s ease-in;
         opacity: 0 ;
     }
 }
