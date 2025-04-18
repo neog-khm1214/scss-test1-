@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- <script src="/js/lib/shortcuts/inview.min.js"></script> -->
+    <link rel="stylesheet" href="./js/lib/animate.css">
+    <script src="./js/lib/jquery.waypoints.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/3.0.0/noframework.waypoints.min.js"></script> -->
+    <style>
+        .hh {
+            background: rgb(218, 207, 207);
+            height: 1200px;
+        }
+
+        .ff {
+            background: rgb(114, 98, 98);
+            height: 600px;
+        }
+
+        #blue {
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+        }
+
+        #red {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #yellow {
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- http://imakewebthings.com/waypoints/<br>
+        https://bokartstudio.tistory.com/84<br>
+        https://support.tobesoft.co.kr/Support/?menu=Education_Schedule&page=1<br>
+        https://www.playnexacro.com/#show:learn:896<br>
+        https://eng.tobesoft.com/assets/js/main.js<br>
+        https://pinkyeti.tistory.com/18<br>
+        https://github.com/neograph1998/grad
+         -->
+        <div class="hh">111</div>
+        <div id="blue" class="animated"></div>
+        <div style="height:2000px"></div>
+        <div id="red" class="animated"></div>
+        <div style="height:2000px"></div>
+        <div id="yellow"></div>
+        <div class="ff">222</div>
+
+    </div>
+</body>
+
+<script>//이름/위치/클래스명1/2/
+    const myObject = [
+        {
+            name: '#blue',
+            offset: '70%',
+            className1: 'lightSpeedOut',
+            className2: 'lightSpeedIn'
+        },
+        {
+            name: '#red',
+            offset: '20%',
+            className1: 'zoomOutRight',
+            className2: 'zoomInRight'
+        },
+    ];
+
+    const myObject2 = { ...myObject };
+    const myKeys = Object.keys(myObject);
+    const myValues = Object.values(myObject);
+    //console.log(myValues[0].name.selector);
+    console.log(myObject2[1].name);
+    console.log(myObject2[0].offset);
+    // $(document).ready(function () {
+    //     $(window).scroll(function () {
+    //         for (var i = 0; i < myKeys.length; i++) {
+
+    //             var target = $(myValues[i].name);
+    //             var targetTop = target.offset().top;
+    //             var scrollValue = $(document).scrollTop();
+
+    //             if (scrollValue < (target - 500)) {
+    //                 target.removeClass(myValues[i].className1);
+    //                 // target.waypoint(function () {
+    //                 //     target.addClass(myValues[i].className2);
+    //                 // }, {
+    //                 //     offset: myValues[i].offset
+    //                 // });
+    //             } else {
+    //                 target.waypoint(function () {
+    //                     target.addClass(myValues[i].className1);
+    //                 }, {
+    //                     offset: myValues[i].offset
+    //                 });
+    //                 //Waypoint.refreshAll();
+    //                 target.removeClass(myValues[i].className2);
+    //             }
+    //         }
+
+    //     });
+
+    // $(window).scroll(function () {
+    //     for (var i = 0; i < myKeys.length; i++) {
+    //         var target = myObject2[i].name.offset().top;
+    //         var scrollValue = $(document).scrollTop();
+    //         if (scrollValue < (target - 500)) {
+    //             myObject2[i].name.removeClass(myObject2[i].className1);
+    //             myObject2[i].name.waypoint(function () {
+    //                 myObject2[i].name.addClass(myObject2[i].className2);
+    //             }, {
+    //                 offset: myObject2[i].offset
+    //             });
+    //         } else {
+    //             myObject2[i].name.waypoint(function () {
+    //                 myObject2[i].name.addClass(myObject2[i].className1);
+    //             }, {
+    //                 offset: myObject2[i].offset
+    //             });
+    //             //Waypoint.refreshAll();
+    //             myObject2[i].name.removeClass(myObject2[i].className2);
+    //         }
+    //     }
+    // });
+
+
+
+    // $(window).scroll(function () {
+    //     //for (var i = 0; i < myKeys.length; i++) {
+    //     var target = $("#blue").offset().top;
+    //     var scrollValue = $(document).scrollTop();
+    //     if (scrollValue < (target - 500)) {
+    //         $("#blue").removeClass('lightSpeedOut');
+    //         $("#blue").waypoint(function () {
+    //             $("#blue").addClass('lightSpeedIn');
+    //         }, {
+    //             offset: "70%"
+    //         });
+    //     } else {
+    //         $("#blue").waypoint(function () {
+    //             $("#blue").addClass('lightSpeedOut');
+    //         }, {
+    //             offset: "70%"
+    //         });
+    //         //Waypoint.refreshAll();
+    //         $("#blue").removeClass('lightSpeedIn');
+    //     }
+    //     // }
+    // });
+
+
+
+    //animate();
+
+
+
+
+    const animate = () => {
+        console.log('동작');
+
+        var name = $("#blue");
+        var class1 = 'lightSpeedOut';
+        var class2 = 'lightSpeedIn';
+        var off = '70%';
+        //for (var i = 0; i < myKeys.length; i++) {
+        var target = name.offset().top;
+        var scrollValue = $(document).scrollTop();
+        if (scrollValue < (target - 500)) {
+            wPnt(off, class1, class2)
+        } else {
+            wPnt(off, class2, class1);
+        }
+        // }
+
+        function wPnt(off, reset, play) {
+            name.removeClass(reset); //class1, class2
+            name.waypoint(function () {
+                name.addClass(play); //class2, class1
+            }, {
+                offset: off
+            });
+        }
+    }
+    $(window).scroll(animate);
+
+    //Waypoint.refreshAll();
+</script>
+
+</html>
