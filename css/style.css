@@ -8,9 +8,11 @@ body {
 }
 
 .fade-in {
+  transition: none;
   opacity: 1;
 }
 .fade-in .fade-out {
+  transition: opacity 0.1s ease-in;
   opacity: 0;
 }
 

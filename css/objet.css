@@ -327,3 +327,15 @@ fieldset {
   border-radius: 5px;
   cursor: pointer;
 }
+
+progress {
+  width: 100%;
+  height: 10px;
+  border: none;
+}
+progress::-webkit-progress-bar {
+  background: #f3f3f3;
+}
+progress::-webkit-progress-value {
+  background: rgb(240, 76, 117);
+}
